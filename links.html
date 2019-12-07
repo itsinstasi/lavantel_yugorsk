@@ -183,6 +183,7 @@ background-color: Transparent;
 border: 1px solid #FFFFFF;
 " class="btn links-page-blc__btn">Отправить запрос</button>
 							</form>
+							<div id="leadSent" class="links-page-blc__txt"></div>
 						</div>
 
 
@@ -193,7 +194,12 @@ border: 1px solid #FFFFFF;
 
 
 
-						<div class="links-page-blc--opacity">
+						<div class="links-page-blc--opacity" style="
+border: 1px solid #FFFFFF;
+background-color: Transparent;
+--elems-color: ;
+--elems-hover: ;
+">
 							<div class="links-page-blc__txt">
 								<p>ХМАО-Югра, город Югорск, ул. Пожарского 9А<br/>Это основной адрес студии биочистки.</p>
 							</div>
@@ -212,7 +218,12 @@ border: 1px solid #FFFFFF;
 
 
 
-						<div class="links-page-blc--opacity">
+						<div class="links-page-blc--opacity" style="
+border: 1px solid #FFFFFF;
+background-color: Transparent;
+--elems-color: ;
+--elems-hover: ;
+">
 							<div class="links-page-blc__txt">
 								<p>ХМАО-Югра, город Югорск, ул. Октябрьская 2<br/>ТРЦ "Лайнер", 2 этаж<br/>Это дополнительный приемный пункт</p>
 							</div>
@@ -283,6 +294,18 @@ $(document).ready(function(){
                 contentType: 'application/json',
 		data : form_data
 	}).done(function(response){
+	    var email = response.email;
+		if (email) {
+	        $("#leadSent").text("Ваш запрос отправлен на " + email);
+		} else {
+	        $("#leadSent").text("Ваш запрос отправлен");
+		}
+
+		var input = form.find('input');
+		input.attr('readonly', true);
+                input.attr("disabled", true);
+		var confirmBtn = form.find('button');
+                confirmBtn.attr("disabled", true);
 	}).fail(function(){
 	});
 
