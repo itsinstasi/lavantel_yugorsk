@@ -303,9 +303,8 @@ $(document).ready(function(){
 
 		var input = form.find('input');
 		input.attr('readonly', true);
-                input.attr("disabled", true);
-		var confirmBtn = form.find('button');
-                confirmBtn.attr("disabled", true);
+        input.attr("disabled", true);
+		form.find('button').attr("disabled", true);
 	}).fail(function(){
 	});
 
